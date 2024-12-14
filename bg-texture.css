@@ -1,0 +1,318 @@
+/* متغيرات CSS الأساسية */
+:root {
+    --bg-primary: #0a0e17;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1f2937;
+    --accent-primary: #00cccc;
+    --accent-secondary: #009999;
+    --text-primary: #ffffff;
+    --text-secondary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --gradient-primary: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(31, 41, 55, 0.95));
+    --gradient-hover: linear-gradient(135deg, rgba(31, 41, 55, 0.95), rgba(55, 65, 81, 0.95));
+    --icon-color: #00b3b3;
+    --icon-hover: #00e6e6;
+    --shadow-primary: 0 4px 20px rgba(0, 204, 204, 0.08);
+    --border-color: rgba(0, 204, 204, 0.08);
+    --glow-effect: 0 0 10px rgba(0, 255, 255, 0.15);
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --border-radius-lg: 1.5rem;
+    --border-radius-md: 1rem;
+    --border-radius-sm: 0.75rem;
+    --blur-effect: blur(10px);
+}
+
+/* تحسين الخلفية */
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.03) 0%, transparent 40%);
+}
+
+/* تحسين التموجات */
+.wave-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.5;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 20px,
+            rgba(0, 255, 255, 0.02) 20px,
+            rgba(0, 255, 255, 0.02) 40px
+        );
+    animation: wave-move 10s linear infinite;
+}
+
+@keyframes wave-move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 40px 40px;
+    }
+}
+
+/* تحسين الحاوية الرئيسية */
+.container {
+    min-height: 100vh;
+    padding: var(--spacing-lg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* تحسين قسم الملف الشخصي */
+.profile-section {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--gradient-primary);
+    backdrop-filter: var(--blur-effect);
+    -webkit-backdrop-filter: var(--blur-effect);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-primary);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 255, 255, 0.12);
+}
+
+.profile-picture {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto var(--spacing-md);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(0, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.15);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.profile-picture:hover {
+    transform: scale(1.05);
+}
+
+.profile-picture:hover img {
+    transform: scale(1.1);
+}
+
+.profile-picture::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 50%, rgba(0, 255, 255, 0.1));
+    pointer-events: none;
+}
+
+.profile-picture i {
+    font-size: 3.5rem;
+    color: var(--accent-primary);
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+/* تحسين العنوان */
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0 0 var(--spacing-xs);
+    color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.2),
+                 0 0 20px rgba(0, 255, 255, 0.1);
+    letter-spacing: 3px;
+    position: relative;
+    display: inline-block;
+}
+
+.tagline {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: var(--spacing-sm) 0;
+    letter-spacing: 1.5px;
+    text-shadow: 0 1px 2px rgba(0, 255, 255, 0.1);
+}
+
+/* تحسين أزرار التواصل */
+.social-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    max-width: 400px;
+    margin: var(--spacing-md) auto;
+}
+
+.social-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    aspect-ratio: 1;
+    padding: 1rem;
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    color: var(--text-primary);
+    background: var(--gradient-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(0, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-button:hover {
+    transform: translateY(-3px);
+    background: var(--gradient-hover);
+    border-color: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
+}
+
+.social-button i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--icon-color);
+    text-shadow: 0 0 5px rgba(0, 204, 204, 0.2);
+    transition: all 0.3s ease;
+}
+
+.social-button:hover i {
+    color: var(--icon-hover);
+    text-shadow: 0 0 8px rgba(0, 204, 204, 0.3);
+}
+
+.button-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.button-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(0, 255, 255, 0.1);
+}
+
+.button-description {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    opacity: 0.9;
+}
+
+/* تحسين التجاوب */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+
+    .social-links {
+        gap: var(--spacing-xs);
+        padding: var(--spacing-sm);
+    }
+
+    .social-button {
+        padding: 0.8rem;
+    }
+
+    .social-button i {
+        font-size: 1.5rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .button-title {
+        font-size: 0.8rem;
+    }
+
+    .button-description {
+        font-size: 0.65rem;
+    }
+}
+
+/* تخصيص ألوان الأيقونات لكل منصة */
+.social-button.youtube i {
+    color: #cc0000;
+}
+
+.social-button.twitch i {
+    color: #6441a5;
+}
+
+.social-button.tiktok i {
+    color: #00f2ea;
+}
+
+.social-button.discord i {
+    color: #5865f2;
+}
+
+/* تأثيرات التحويم */
+.social-button.youtube:hover i {
+    color: #ff0000;
+}
+
+.social-button.twitch:hover i {
+    color: #9146ff;
+}
+
+.social-button.tiktok:hover i {
+    color: #00f7eb;
+}
+
+.social-button.discord:hover i {
+    color: #7289da;
+}
